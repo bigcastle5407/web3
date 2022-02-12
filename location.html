@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    <link rel="stylesheet" href="location.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="intro_bg">
+            <div class="header" id="link_header">
+                <div class="searchArea">
+                    <form>
+                    <input type="search" placeholder="Search">
+                    <span>검색</span>
+                    </form>
+                </div>
+                <ul class="nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html#pic">PICTURE</a></li>
+                    <li><a href="index2.html">FRIENDS</a></li>
+                    <li><a href="index.html#youtube">YOUTUBE</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="intro_text">
+            <h1>찾아오시는 길</h1>
+            </div>
+        </div>
+
+    
+
+    <div class="main_text0" id="loc">
+        <h1>LOCATION</h1>
+        <div class="content">스마트인재개발원</div>
+        <ul class="icons">
+            <li>
+                <div class="location">
+                    <h2>광주아트센터</h2>
+                    <div id="map" style="width:100%;height:550px;"></div>
+                </div>
+            </li>
+            <li>
+                <div class="location">
+                   <h2>광주CGI센터</h2>
+                   <div id="map2" style="width:100%;height:550px;"></div>
+                </div>
+            </li>
+        </div>
+    <footer>
+
+        <div>
+            <img src="img/t.webp">
+        </div>
+        <div>
+            
+            스마트인재개발원<br>
+
+            [본원] 광주 동구 예술길 31-15 광주아트센터 3,4,7층<br>
+
+            [분원] 광주 남구 송암로 60 광주CGI센터 2층 <br>
+
+
+            TEL. 062-000-0000  /  FAX. 062-000-0000  /  E-Mail : smhrd@smhrd.or.kr<br>
+
+            Copyright © 2022 bigcastle.,Ltd All rights Reserved<br>
+            
+        </div>
+
+
+       </footer>
+
+       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4f71f7f0348c9f112b2f9eb071b95fd4&libraries=services"></script>
+       <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('광주 동구 대의동 10-1 3층', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">스마트인재개발원</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});   
+        </script>
+
+
+
+
+        <script>
+    var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div 
+    mapOption2 = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+const map2 = new kakao.maps.Map(mapContainer2, mapOption2); 
+
+// 주소-좌표 변환 객체를 생성합니다
+const geocoder2 = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder2.addressSearch('광주 남구 송암로 60 광주CGI센터', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        const coords2 = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        const marker2 = new kakao.maps.Marker({
+            map: map2,
+            position: coords2
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        const infowindow2 = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">스마트인재개발원</div>'
+        });
+        infowindow2.open(map2, marker2);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map2.setCenter(coords2);
+    } 
+});   
+
+</script>
+</body>
+</html>
